@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Stylish Directory Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2 class="logo">✨ AI Manager</h2>
+        <ul>
+            <li onclick="scrollToSection('dashboardSection')">📊 Dashboard</li>
+            <li onclick="scrollToSection('uploadSection')">⬆ Upload Files</li>
+            <li onclick="scrollToSection('categorySection')">📁 Categories</li>
+            <li onclick="scrollToSection('settingsSection')">⚙ Settings</li>
+            <li onclick="resetAll()">🗑 Reset System</li>
+        </ul>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- Top Navbar -->
+        <nav class="navbar">
+            <h1>AI-Powered Stylish Directory Manager</h1>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search files..." onkeyup="searchFiles()">
+                <button class="search-btn">🔍</button>
+            </div>
+        </nav>
+
+        <!-- Upload Section -->
+        <section id="uploadSection" class="upload-area fade-in">
+            <h2>Upload Files</h2>
+
+            <div id="dropZone" class="drop-zone"
+                 ondrop="dropHandler(event)"
+                 ondragover="dragOverHandler(event)">
+                <p>🌈 Drag & Drop files here</p>
+            </div>
+
+            <label class="fileInputLabel">
+                Choose File
+                <input type="file" id="fileInput" multiple>
+            </label>
+
+            <button class="gradient-btn" onclick="uploadFiles()">Upload & Auto Categorize</button>
+        </section>
+
+        <!-- Category Section -->
+        <section id="categorySection" class="category-container fade-in">
+            <h2>Organized Categories</h2>
+            <div id="categories"></div>
+        </section>
+
+    </main>
+
+    <!-- PREVIEW MODAL -->
+    <div id="modal" class="modal">
+        <div class="modal-content glass">
+            <span onclick="closeModal()" class="close-btn">&times;</span>
+            <iframe id="previewFrame"></iframe>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
